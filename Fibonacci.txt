@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>Fibonacci</title>
+    
+    <script>
+        
+        function printFibonacci(n) 
+        {
+            var fibonacci;
+  let a = 0, b = 1, c;
+  document.write(a);
+  document.write(" "+b);
+  for (let i = 2; i < n; i++) 
+  {
+    c = a + b;
+    
+    document.write("  "+c);
+    a = b;
+    b = c;
+    
+  }
+  document.getElementById("result").innerHTML="fibonacci : "+fibonacci
+}
+
+printFibonacci(10);
+    </script>
+</head>
+<body>
+    <form>
+        Enter number : <input type="number" name="num" />
+        <br/>
+        <input type="button" value="Calculate fibonacci" 
+        onclick="fact(num.value)"/>
+    </form>
+    <div id="result">...............</div>
+</body>
+</html>
