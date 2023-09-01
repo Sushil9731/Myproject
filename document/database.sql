@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
--- Host: localhost    Database: athens
+-- Host: localhost    Database: athens1
 -- ------------------------------------------------------
 -- Server version	8.0.32
 
@@ -26,7 +26,7 @@ CREATE TABLE `assignments` (
   `course_id` int NOT NULL,
   `assignment` varchar(255) NOT NULL,
   `is_submitted` tinyint(1) DEFAULT '0',
-  `submission_date` datetime(6) NOT NULL,
+  `submission_date` datetime NOT NULL,
   PRIMARY KEY (`course_id`),
   CONSTRAINT `FK6p1m72jobsvmrrn4bpj4168mg` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -38,7 +38,7 @@ CREATE TABLE `assignments` (
 
 LOCK TABLES `assignments` WRITE;
 /*!40000 ALTER TABLE `assignments` DISABLE KEYS */;
-INSERT INTO `assignments` VALUES (1,'Implement Quick Sort Algorithm',1,'2023-08-24 22:39:08.797979');
+INSERT INTO `assignments` VALUES (1,'Python',1,'2023-08-25 00:00:00');
 /*!40000 ALTER TABLE `assignments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -66,7 +66,7 @@ CREATE TABLE `courses` (
 
 LOCK TABLES `courses` WRITE;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
-INSERT INTO `courses` VALUES (1,1,0,250,'A','ALGORITHMS'),(2,1,0,250,'A','ANALYSIS'),(3,1,0,200,'B','PYTHON'),(4,1,0,200,'B','DATABASES'),(5,1,0,400,'B','MASTER_THESIS');
+INSERT INTO `courses` VALUES (1,1,1,250,'A','ALGORITHMS'),(2,1,1,250,'A','ANALYSIS'),(3,1,1,200,'B','PYTHON'),(4,1,1,200,'B','DATABASES'),(5,1,1,400,'B','MASTER_THESIS');
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -79,13 +79,13 @@ DROP TABLE IF EXISTS `password_reset_tokens`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `password_reset_tokens` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `expiry_date` datetime(6) DEFAULT NULL,
+  `expiry_date` datetime DEFAULT NULL,
   `token` varchar(255) DEFAULT NULL,
   `user_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FKk3ndxg5xp6v7wd4gjyusp15gq` (`user_id`),
   CONSTRAINT `FKk3ndxg5xp6v7wd4gjyusp15gq` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,7 +94,7 @@ CREATE TABLE `password_reset_tokens` (
 
 LOCK TABLES `password_reset_tokens` WRITE;
 /*!40000 ALTER TABLE `password_reset_tokens` DISABLE KEYS */;
-INSERT INTO `password_reset_tokens` VALUES (1,'2023-08-24 22:39:08.797979','ef06e6bb-9f48-47e4-ae2c-89be8857d6cd12553db9-1c27-4521-9065-0d88847ebd2b',1),(2,'2023-08-24 22:51:26.865888','2d430fa6-32db-4f70-8ebf-d24b463e52fb49de690a-29ec-4b42-b65f-3cc44c8a509e',4),(3,'2023-08-24 22:57:37.567258','c7f71eed-c87b-42a1-b564-44ba375f90a42f57141b-6977-4ba0-ba07-3336fa3e0045',4),(4,'2023-08-25 14:11:15.811619','59034400-bafd-40f4-888e-3cb02d8b5557b00108a5-a070-4c81-a7ea-a70131ccb394',7);
+INSERT INTO `password_reset_tokens` VALUES (2,'2023-08-27 01:14:48','81f1c17d-deee-4c17-bc8f-fec576a0f8b229c164e1-ac62-48d0-b373-f709b4b7a97e',4);
 /*!40000 ALTER TABLE `password_reset_tokens` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,7 +110,7 @@ CREATE TABLE `roles` (
   `role` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_g50w4r0ru3g9uf6i6fr4kpro8` (`role`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -144,7 +144,7 @@ CREATE TABLE `students` (
 
 LOCK TABLES `students` WRITE;
 /*!40000 ALTER TABLE `students` DISABLE KEYS */;
-INSERT INTO `students` VALUES (2,500),(6,1000);
+INSERT INTO `students` VALUES (4,5000);
 /*!40000 ALTER TABLE `students` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,7 +171,7 @@ CREATE TABLE `students_courses` (
 
 LOCK TABLES `students_courses` WRITE;
 /*!40000 ALTER TABLE `students_courses` DISABLE KEYS */;
-INSERT INTO `students_courses` VALUES (2,1),(6,1),(7,1),(8,1);
+INSERT INTO `students_courses` VALUES (4,1),(4,2),(4,3),(4,4),(4,5);
 /*!40000 ALTER TABLE `students_courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,7 +196,7 @@ CREATE TABLE `trainers` (
 
 LOCK TABLES `trainers` WRITE;
 /*!40000 ALTER TABLE `trainers` DISABLE KEYS */;
-INSERT INTO `trainers` VALUES (4,'ALGORITHMS'),(5,'ALGORITHMS');
+INSERT INTO `trainers` VALUES (5,'Core Java');
 /*!40000 ALTER TABLE `trainers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -223,7 +223,7 @@ CREATE TABLE `trainers_courses` (
 
 LOCK TABLES `trainers_courses` WRITE;
 /*!40000 ALTER TABLE `trainers_courses` DISABLE KEYS */;
-INSERT INTO `trainers_courses` VALUES (4,1),(5,1);
+INSERT INTO `trainers_courses` VALUES (5,1);
 /*!40000 ALTER TABLE `trainers_courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -251,7 +251,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin@coodle.com','admin','admin','$2a$10$Ov56CV8sQPjNcv4vOQ3tTuEf2vnEah3ahxATdaFWPa6Pg.Kdw0G9e'),(2,'chermworthT@coodle.com','Student1','Student1','$2a$10$CIVe4IO84/GLkDX7thUWrOgYxQn1KZYfBqIULQs0YLGAwqc5oMcj6'),(4,'rp0654031@yahoo.com','Durgesh','Verma','$2a$10$mSJplRteTIH2UfFj3Dj.1OkINUKLDfpyKSXtYhHMPcKK.eSWJ8zhK'),(5,'khandu@gmail.com','Amol','More','$2a$10$OZjBgxr12ztnt03b33QHIeXcVxCqawOcbHfqAJG5YBn437obkKEni'),(6,'mayurp@gmail.com','Mayur','Patil','$2a$10$/xFioGtHWCPouzx8NooTrOyNd14gz/JSBk8gxME2PxDtKXu5n/JqC'),(7,'shindeajinkya2000@gmail.com','Ajinkya','Shinde','$2a$10$65YMfjoRy5NygvxWy0hps.4PxH8Jh6nVv1D6BmOVp/Foli0E.HwHu'),(8,'pankajdeore229@gmail.com','Pankaj','Deore','$2a$10$sJyto/fZESjC7S9jamHLlOC41QNXy7IIkF4VzADxqqyqBIlF4SPuq');
+INSERT INTO `users` VALUES (1,'admin@gmail.com','admin','admin','$2a$10$Ov56CV8sQPjNcv4vOQ3tTuEf2vnEah3ahxATdaFWPa6Pg.Kdw0G9e'),(4,'rp0654031@gmail.com','Ravindra','Patil','$2a$10$2dyc23nqR2XLBVFJEaU6PuoV36ycgce2UCww6MHrzhJnkd/jccYXy'),(5,'durgesh@gmail.com','Durgesh','Verma','$2a$10$ZNkygT4D8gmaYLwfbDs8Wu9Py/EMO777kC.1FJdG66D1clgwd1Vku');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -278,7 +278,7 @@ CREATE TABLE `users_roles` (
 
 LOCK TABLES `users_roles` WRITE;
 /*!40000 ALTER TABLE `users_roles` DISABLE KEYS */;
-INSERT INTO `users_roles` VALUES (2,1),(6,1),(7,1),(8,1),(4,2),(5,2),(1,3);
+INSERT INTO `users_roles` VALUES (3,1),(4,1),(5,2),(1,3);
 /*!40000 ALTER TABLE `users_roles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -291,4 +291,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-25 20:40:29
+-- Dump completed on 2023-08-27  1:42:16
